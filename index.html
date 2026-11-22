@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feliz aniversario mi amorciño ♥</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fffdfb; --ink:#141414; --muted:#7d6f6a; --red:#e2373f; --red-d:#a8222a; --pink:#f7a9b4;
+    --gold:#e9b54a; --cream:#fff6ee; --line:#141414; --px:4px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pixelify Sans",monospace;font-size:18px}
+  body{min-height:100vh;display:flex;justify-content:center;padding:20px 14px 70px;
+    background-image:radial-gradient(var(--gold) 1.5px,transparent 1.5px);background-size:46px 46px;background-position:0 0}
+  .wrap{width:100%;max-width:560px}
+  .pixel{font-family:"Press Start 2P",monospace;line-height:1.6}
+  h1{font-family:"Press Start 2P",monospace;font-size:20px;line-height:1.6;margin:0;letter-spacing:.02em}
+  h2{font-family:"Press Start 2P",monospace;font-size:14px;line-height:1.8;margin:0}
+  p{line-height:1.45;margin:0}
+  .muted{color:var(--muted)}
+  img.sprite{image-rendering:pixelated;display:block}
+
+  /* pixel box with notched corners */
+  .box{position:relative;background:#fff;margin:var(--px);padding:22px 18px;
+    box-shadow:0 calc(-1*var(--px)) 0 0 var(--line),0 var(--px) 0 0 var(--line),calc(-1*var(--px)) 0 0 0 var(--line),var(--px) 0 0 0 var(--line),
+               0 calc(2*var(--px)) 0 0 rgba(20,20,20,.15)}
+  .btn{font-family:"Press Start 2P",monospace;font-size:11px;letter-spacing:.04em;border:0;cursor:pointer;color:#fff;background:var(--red);
+    padding:14px 18px;margin:var(--px);
+    box-shadow:0 calc(-1*var(--px)) 0 0 var(--line),0 var(--px) 0 0 var(--line),calc(-1*var(--px)) 0 0 0 var(--line),var(--px) 0 0 0 var(--line),
+               inset 0 calc(-1*var(--px)) 0 0 var(--red-d),inset var(--px) var(--px) 0 0 rgba(255,255,255,.35)}
+  .btn:active{transform:translateY(2px)}
+  .btn:disabled{opacity:.4;cursor:default}
+  .btn.ghost{background:#fff;color:var(--ink);box-shadow:0 calc(-1*var(--px)) 0 0 var(--line),0 var(--px) 0 0 var(--line),calc(-1*var(--px)) 0 0 0 var(--line),var(--px) 0 0 0 var(--line),inset 0 calc(-1*var(--px)) 0 0 #e8ded8}
+  .btn.small{font-size:9px;padding:9px 11px}
+  .blink{animation:blink 1s steps(2,start) infinite}
+  @keyframes blink{to{visibility:hidden}}
+  .bob{animation:bob 1.2s steps(2) infinite}
+  @keyframes bob{50%{transform:translateY(-4px)}}
+
+  .tabs{display:flex;gap:8px;margin-bottom:18px}
+  .tab{flex:1}
+  .tab.on{background:var(--ink);color:#fff;box-shadow:0 -4px 0 0 var(--line),0 4px 0 0 var(--line),-4px 0 0 0 var(--line),4px 0 0 0 var(--line)}
+
+  .hearts{display:flex;justify-content:center;align-items:flex-end;gap:0;margin:6px 0 18px}
+  .bar{display:flex;gap:4px;margin-bottom:20px}
+  .bar i{flex:1;height:12px;background:#eee4de;box-shadow:inset 0 0 0 2px var(--line)}
+  .bar i.on{background:var(--red)}
+  .qtag{font-family:"Press Start 2P",monospace;font-size:9px;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .card{background:#fff;border:0;padding:8px 8px 12px;text-align:left;cursor:pointer;font:inherit;color:inherit;margin:var(--px);position:relative;
+    box-shadow:0 -4px 0 0 var(--line),0 4px 0 0 var(--line),-4px 0 0 0 var(--line),4px 0 0 0 var(--line)}
+  .card .pic{aspect-ratio:1/1;background:var(--cream);display:flex;align-items:center;justify-content:center;margin-bottom:10px;overflow:hidden}
+  .card .pic img.photo{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+  .card .name{font-weight:600;font-size:17px;line-height:1.2}
+  .card .desc{font-size:14px;color:var(--muted);margin-top:4px;line-height:1.3}
+  .card.on{background:#ffeef0;box-shadow:0 -4px 0 0 var(--red),0 4px 0 0 var(--red),-4px 0 0 0 var(--red),4px 0 0 0 var(--red),0 0 0 8px #ffd3d9}
+  .card .check{position:absolute;top:-10px;right:-10px;display:none}
+  .card.on .check{display:block}
+  .scale{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  .scale .card{text-align:center;padding:12px 0;font-family:"Press Start 2P";font-size:12px}
+  textarea,input[type=text],select{width:100%;font:18px "Pixelify Sans",monospace;color:var(--ink);background:#fff;border:0;outline:none;padding:12px;margin:var(--px);width:calc(100% - 8px);
+    box-shadow:0 -4px 0 0 var(--line),0 4px 0 0 var(--line),-4px 0 0 0 var(--line),4px 0 0 0 var(--line)}
+  textarea:focus,input[type=text]:focus,select:focus{box-shadow:0 -4px 0 0 var(--red),0 4px 0 0 var(--red),-4px 0 0 0 var(--red),4px 0 0 0 var(--red)}
+  textarea{min-height:110px;resize:vertical}
+  .note{margin-top:18px}
+  .note label{font-size:15px;color:var(--muted);display:block;margin-bottom:6px}
+  .note textarea{min-height:64px}
+  .nav{display:flex;justify-content:space-between;margin-top:24px;gap:10px}
+  .fade{animation:fade .3s steps(4)}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .center{text-align:center}
+
+  /* editor */
+  .qedit{background:#fff;padding:14px;margin:var(--px) var(--px) 18px;box-shadow:0 -4px 0 0 var(--line),0 4px 0 0 var(--line),-4px 0 0 0 var(--line),4px 0 0 0 var(--line);display:grid;gap:10px}
+  .row{display:flex;gap:8px;align-items:center}
+  .between{justify-content:space-between}
+  .icon{border:0;background:transparent;cursor:pointer;font:600 18px "Pixelify Sans";color:var(--muted);padding:4px 8px}
+  .icon:hover{color:var(--ink)}
+  .oedit{display:grid;grid-template-columns:64px 1fr auto;gap:8px;align-items:start;padding:8px;background:var(--cream)}
+  .thumb{width:64px;height:64px;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;box-shadow:inset 0 0 0 2px var(--line);position:relative}
+  .thumb img.photo{max-width:100%;max-height:100%;object-fit:contain}
+  .thumb .up{position:absolute;bottom:0;left:0;right:0;font:9px "Press Start 2P";background:rgba(20,20,20,.75);color:#fff;text-align:center;padding:3px 0}
+  .oedit input[type=text]{font-size:15px;padding:8px;margin:2px 4px 6px}
+  label.small{font-size:14px;color:var(--muted);display:block;margin:0 4px 2px}
+  .tag{font:9px "Press Start 2P";background:var(--red);color:#fff;padding:5px 8px}
+
+  .sub{background:#fff;padding:16px;margin:var(--px) var(--px) 18px;box-shadow:0 -4px 0 0 var(--line),0 4px 0 0 var(--line),-4px 0 0 0 var(--line),4px 0 0 0 var(--line)}
+  .sub .item{display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:center;padding:10px 0;border-top:2px dashed #e5d9d2}
+  .sub .item:first-of-type{border-top:0}
+  .sub .item .pic{width:56px;height:56px;background:var(--cream);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .sub .item .pic img.photo{max-width:100%;max-height:100%;object-fit:contain}
+  .sub .q{font-size:14px;color:var(--muted)}
+  .sub .a{font-size:17px;font-weight:600}
+  .sub .n{font-size:15px;margin-top:2px;white-space:pre-wrap}
+
+  .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;font:10px "Press Start 2P";opacity:0;transition:opacity .2s steps(2);pointer-events:none;z-index:9}
+  .toast.on{opacity:1}
+
+  .duo{position:relative;display:flex;justify-content:center;margin:0 auto 14px;height:var(--h,300px)}
+  .duo img.art{height:100%;width:auto;image-rendering:pixelated;}
+  @keyframes breathe{50%{transform:translateY(-3px) scaleY(1.012)}}
+  .duo .fx{position:absolute;bottom:55%;left:50%;opacity:0;animation:rise 3.2s steps(8) infinite}
+  @keyframes rise{0%{opacity:0;transform:translate(var(--x),0)}15%{opacity:1}80%{opacity:1}100%{opacity:0;transform:translate(calc(var(--x) + var(--dx)),-150px)}}
+  .duo .tw{position:absolute;animation:tw 1.2s steps(2) infinite}
+  @keyframes tw{50%{opacity:.15}}
+  .mini{height:56px;width:auto;image-rendering:pixelated}
+  @keyframes hop{50%{transform:translateY(-3px)}}
+  @media (prefers-reduced-motion:reduce){.duo img.art,.duo .fx,.duo .tw,.mini,.bob,.blink{animation:none!important}.duo .fx{display:none}}
+  @keyframes burst{to{transform:translateY(-110vh)}}
+  .box.scene{padding:0;overflow:hidden}
+  .stage{position:relative;height:270px;overflow:hidden;margin:0;background-repeat:no-repeat;background-size:600px 270px;background-position:center bottom;image-rendering:pixelated}
+  .walker{position:absolute;bottom:14px;left:0;width:112px;height:152px;background-repeat:no-repeat;image-rendering:pixelated;will-change:transform}
+  .floor{position:absolute;left:0;right:0;bottom:0;height:14px;background:repeating-linear-gradient(90deg,#f3e3d3 0 8px,#ead5c2 8px 16px);box-shadow:inset 0 4px 0 #e2c9b3}
+  .popheart{position:absolute;top:84px;animation:pop .9s steps(3) infinite alternate}
+  @keyframes pop{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+  .kissheart{position:absolute;top:70px;z-index:3;animation:kiss .9s steps(4) forwards}
+  @keyframes kiss{0%{transform:scale(.2);opacity:0}60%{transform:scale(1.15);opacity:1}100%{transform:scale(1)}}
+  .kissmini{position:absolute;top:110px;z-index:3;opacity:0;animation:rise2 1.4s steps(7) forwards}
+  @keyframes rise2{0%{opacity:0}20%{opacity:1}100%{opacity:0;transform:translateY(-90px)}}
+  .flash{position:fixed;inset:0;background:#fff;z-index:20;pointer-events:none;animation:flash 1s steps(5) forwards}
+  @keyframes flash{0%{opacity:0}40%{opacity:1}100%{opacity:0}}
+  .benbar{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:560px;height:112px;overflow:hidden;pointer-events:none;z-index:7;background:linear-gradient(rgba(255,253,251,0),rgba(255,253,251,.95) 60%)}
+  body.withben{padding-bottom:120px}
+  .benbar::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:4px;background:repeating-linear-gradient(90deg,#e8d6c4 0 8px,transparent 8px 14px)}
+  .ben,.benw{position:absolute;bottom:6px;left:0;width:80px;height:72px;background:url(img/ben.png) no-repeat;background-size:320px 360px;image-rendering:pixelated;z-index:1}
+  .benw{bottom:14px}
+  .dialog{position:relative;text-align:left;background:#1d1a2e;color:#fff;padding:16px 16px 22px;margin:4px;min-height:96px;
+    box-shadow:0 -4px 0 #fff,0 4px 0 #fff,-4px 0 0 #fff,4px 0 0 #fff,0 -8px 0 var(--ink),0 8px 0 var(--ink),-8px 0 0 var(--ink),8px 0 0 var(--ink)}
+  .dialog .d1{font:600 20px "Pixelify Sans",monospace;color:#ff8c96;margin:0 0 8px;min-height:24px}
+  .dialog .d2{font:13px/1.8 "Press Start 2P",monospace;margin:0;min-height:24px}
+  .dialog .lyric{font:500 17px/1.45 "Pixelify Sans",monospace;color:#f6e7c8;min-height:0}
+  .dialog .d1.lyric{margin-bottom:6px}
+  .dialog .dnext{position:absolute;right:12px;bottom:6px;font-size:12px;animation:blink 1s steps(2,start) infinite}
+  .wedcard{margin:22px 4px 4px;padding:16px;background:#fff9f0;text-align:left;box-shadow:0 -4px 0 var(--ink),0 4px 0 var(--ink),-4px 0 0 var(--ink),4px 0 0 var(--ink)}
+  .wedcard h3{font:11px/1.6 "Press Start 2P",monospace;text-align:center;color:var(--red);margin:0 0 12px}
+  .wedrow{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center;padding:8px 0;border-top:2px dashed #ead9c8}
+  .wedrow:first-of-type{border-top:0}
+  .wedrow .pic{width:52px;height:52px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 2px var(--ink)}
+  .wedrow .pic img.photo{max-width:100%;max-height:100%;object-fit:contain}
+  .wedrow .k{font:8px/1.6 "Press Start 2P",monospace;color:var(--muted)}
+  .wedrow .v{font-size:17px;font-weight:600}
+  .bubble{position:absolute;z-index:8;font:9px "Press Start 2P",monospace;background:#fff;color:var(--ink);padding:6px 7px;white-space:nowrap;
+    box-shadow:0 -2px 0 var(--ink),0 2px 0 var(--ink),-2px 0 0 var(--ink),2px 0 0 var(--ink);animation:bub 1.4s steps(6) forwards}
+  .bubble::after{content:"";position:absolute;left:10px;bottom:-6px;width:4px;height:4px;background:var(--ink);box-shadow:2px -2px 0 #fff}
+  @keyframes bub{0%{opacity:0;transform:translateY(4px)}15%{opacity:1;transform:none}80%{opacity:1}100%{opacity:0;transform:translateY(-6px)}}
+  .mute{position:fixed;top:10px;right:10px;z-index:9;font-size:8px;padding:8px 9px}
+  .hidden{display:none!important}
+  @media (max-width:380px){ .grid{gap:10px} .card .name{font-size:15px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="tabs" class="tabs hidden">
+    <button class="btn small tab on" data-v="play">Jugar</button>
+    <button class="btn small ghost tab" data-v="edit">Editar</button>
+    <button class="btn small ghost tab" data-v="answers">Respuestas</button>
+  </div>
+  <div id="view" class="box center"><p class="pixel" style="font-size:10px">LOADING<span class="blink">_</span></p></div>
+  <div id="benbar" class="benbar hidden"><div class="ben" id="ben"></div><div class="ben" id="perra"></div></div>
+</div>
+<input type="file" id="file" accept="image/*" class="hidden">
+<div id="toast" class="toast"></div>
+<button id="mute" class="btn small ghost mute">♪ ON</button>
+
+<script>
+/* ===== Configuración ===== */
+const FORM_URL = "https://formspree.io/f/xljbornz";
+const QUESTIONS = [{"id": "anillo", "icon": "ring", "order": 0, "text": "¿Cuál anillo te gusta más?", "type": "choice", "options": [{"desc": "Dos bandas finitas que se cruzan, con brillantes salpicados como una ramita", "img": "img/anillo1.jpg", "label": "Enredadera"}, {"desc": "Banda de oro trenzada con una sola piedrita en el centro, súper delicado", "img": "img/anillo2.jpg", "label": "Twist con un brillante"}, {"desc": "Uno para cada una: distintos pero de la misma familia, con piedra central y banda con brillitos", "img": "img/anillo3.jpg", "label": "Dúo a juego"}, {"desc": "Piedra ovalada rosa clarito con florcitas de brillantes a los costados, aire antiguo", "img": "img/anillo4.jpg", "label": "Vintage rosado"}, {"desc": "Brillante central con piedritas desparramadas como estrellas", "img": "img/anillo5.jpg", "label": "Constelación"}, {"desc": "Piedra redonda grande sobre una banda twist con brillitos finos", "img": "img/anillo6.jpg", "label": "Solitario trenzado"}]}, {"id": "propuesta", "icon": "box", "order": 1, "text": "¿Cómo sería la propuesta ideal?", "type": "choice", "options": [{"desc": "Al atardecer, con el sol cayendo sobre el mar", "img": "img/propuesta_playa.png", "label": "En la playa"}, {"desc": "Arriba de todo, con las montañas y la ciudad a nuestros pies", "img": "img/propuesta_mirador.png", "label": "Mirador con vista"}, {"desc": "Nuestro living lleno de velas y pétalos", "img": "img/propuesta_velas.png", "label": "En casa con velas"}, {"desc": "De noche, con una mantita, lucecitas y el cielo lleno de estrellas", "img": "img/propuesta_estrellas.png", "label": "Bajo las estrellas"}, {"desc": "Mantel a cuadros, canasta y un campo lleno de flores", "img": "img/propuesta_picnic.png", "label": "Picnic entre flores"}, {"desc": "Flotando al amanecer, solas las dos sobre las nubes", "img": "img/propuesta_globo.png", "label": "Globo aerostático"}]}, {"id": "ceremonia", "icon": "chapel", "order": 2, "text": "¿Qué ceremonia te imaginás?", "type": "choice", "options": [{"desc": "Firma, alfombra roja, lluvia de pétalos y brindis con las más cercanas", "img": "img/ceremonia_civil.png", "label": "Registro civil"}, {"desc": "Arco de flores, pies en la arena y el mar de fondo", "img": "img/ceremonia_playa.png", "label": "En la playa"}, {"desc": "Viñedo, mesas largas y guirnaldas de luces", "img": "img/ceremonia_campo.png", "label": "En el campo"}, {"desc": "Bola de espejos, pista llena y baile hasta tarde", "img": "img/ceremonia_fieston.png", "label": "Fiestón"}, {"desc": "Viajamos todas y todos a una isla para casarnos", "img": "img/ceremonia_destino.png", "label": "Boda destino"}, {"desc": "Nos casamos a escondidas y salimos en auto con latitas atadas", "img": "img/ceremonia_fuga.png", "label": "Fugarnos"}]}, {"id": "outfit", "icon": "heart", "order": 3, "text": "¿Qué outfit de boda te gusta más?", "type": "choice", "options": [{"desc": "Chaleco y pantalón de pierna ancha, elegante y moderno", "img": "img/outfit1.jpg", "label": "Traje de satén"}, {"desc": "Vestido corto de tul con mangas globo y mocasines", "img": "img/outfit2.jpg", "label": "Mini romántica"}, {"desc": "Vestido corto con moños en los hombros, fresco y relajado", "img": "img/outfit3.jpg", "label": "Mini con moños"}, {"desc": "Vestido liso de breteles finos, con tajo y velo de catedral", "img": "img/outfit4.jpg", "label": "Satén con velo largo"}, {"desc": "Dos piezas de satén: top corto y pantalón súper amplio", "img": "img/outfit5.jpg", "label": "Top y palazzo"}, {"desc": "Vestido de tul con corset, tajo y botas negras", "img": "img/outfit6.jpg", "label": "Boho con borcegos"}]}, {"id": "casita", "icon": "house", "order": 4, "text": "¿Qué estilo querés para nuestra casita?", "type": "choice", "options": [{"desc": "Cemento a la vista, entrepiso, sillones verdes y vinilos en la pared", "img": "img/casa1.jpg", "label": "Loft industrial"}, {"desc": "Madera, biblioteca de vidrio, plantas y luz dorada de la tarde", "img": "img/casa2.jpg", "label": "Mid-century parisino"}, {"desc": "Lámpara de arco naranja, cromado, tocadiscos y sillón mostaza", "img": "img/casa3.jpg", "label": "Retro setentoso"}, {"desc": "Beige, madera clara, líneas simples y todo en calma", "img": "img/casa4.jpg", "label": "Minimalista cálido"}, {"desc": "Color por todos lados, cuadros, alfombra a cuadros y objetos divertidos", "img": "img/casa5.jpg", "label": "Ecléctico"}, {"desc": "Luminoso y simple, con yute, plantas y toques de color", "img": "img/casa6.jpg", "label": "Nórdico cálido"}]}, {"id": "final", "icon": "heart", "order": 5, "text": "¿Algo más que sueñes para nosotras?", "type": "text", "options": []}];
+const META = {"title": "Feliz aniversario mi amorciño", "intro": "Elegí lo que más te guste. No hay respuestas incorrectas."};
+/* ===== Guardado con Formspree (reemplaza la base de datos de Claude) ===== */
+(function(){
+  async function send(payload){
+    if(!FORM_URL || FORM_URL.indexOf("formspree.io") < 0){ console.log("Formspree sin configurar", payload); return; }
+    const r = await fetch(FORM_URL, {method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"}, body: JSON.stringify(payload)});
+    if(!r.ok) throw new Error("Formspree " + r.status);
+  }
+  function readable(data){
+    const out = {_subject: "💌 Respuestas del juego", fecha: new Date().toLocaleString("es-AR")};
+    (data.questions||[]).forEach((q,i) => {
+      const v = (data.values||{})[q.id], n = (data.values||{})[q.id+"__note"];
+      out[(i+1)+". "+q.text] = (v===undefined||v==="") ? "(sin respuesta)" : String(v);
+      if(n) out[(i+1)+". Comentario"] = n;
+    });
+    return out;
+  }
+  const snap = arr => ({docs: arr.map(d => ({id:d.id, data:() => d}))});
+  const db = {
+    collection: (p) => ({
+      onSnapshot: (cb) => { setTimeout(() => cb(snap(p==="questions" ? QUESTIONS : [])), 0); return () => {}; },
+      doc: (id) => ({
+        set: async (data) => send(readable(data)),
+        update: async (data) => send({_subject: "💍 ¡DIJO QUE SÍ!", respuesta: data.yes, fecha: new Date().toLocaleString("es-AR")})
+      })
+    }),
+    doc: () => ({ onSnapshot: (cb) => { setTimeout(() => cb({data:() => META}), 0); return () => {}; } })
+  };
+  const user = {isOwner: async () => false, id: async () => null, profiles: async () => ({})};
+  window.claude = {use: async (n) => n==="db" ? db : n==="user" ? user : null};
+})();
+</script>
+<script>
+/* ---------- pixel sprites (original) ---------- */
+const PAL = {K:"#141414",R:"#e2373f",D:"#7a1d2a",P:"#f7a9b4",W:"#ffffff",Y:"#e9b54a",C:"#9fd8ef",G:"#5aa469",B:"#8a5a3c",S:"#d9d2cc"};
+const SPR = {
+  heart:[
+    "..KKK...KKK..",
+    ".KRRRK.KRRRK.",
+    "KRWWRRKRRRRRK",
+    "KRWRRRRRRRRRK",
+    "KRRKRRRRRKRRK",
+    "KRPRRKRKRRPRK",
+    ".KRRRRKRRRRK.",
+    "..KRRRRRRRK..",
+    "...KRRRRRK...",
+    "....KRRRK....",
+    ".....KRK.....",
+    "......K......",
+    "....K...K....",
+    "...KK...KK..."],
+  ring:[
+    "....KKK....",
+    "...KCWCK...",
+    "..KCWCCCK..",
+    "...KCCCK...",
+    "....KYK....",
+    "..KKYYYKK..",
+    ".KYYKKKYYK.",
+    "KYK.....KYK",
+    "KYK.....KYK",
+    "KYK.....KYK",
+    ".KYYKKKYYK.",
+    "..KKYYYKK.."],
+  chapel:[
+    ".....Y.....",
+    "....YYY....",
+    ".....Y.....",
+    "....KKK....",
+    "...KWWWK...",
+    "..KWWWWWK..",
+    ".KWWWWWWWK.",
+    "KKKKKKKKKKK",
+    ".KWWWRWWWK.",
+    ".KWWRRRWWK.",
+    ".KWWRRRWWK.",
+    ".KKKKKKKKK.",
+    "GGGGGGGGGGG"],
+  box:[
+    ".KKKKKKKKK.",
+    ".KRRRRRRRK.",
+    ".KRWRRRRRK.",
+    ".KKKKKKKKK.",
+    ".KDDDKDDDK.",
+    ".KDDKCKDDK.",
+    ".KDDKWKDDK.",
+    ".KDDYKYDDK.",
+    ".KDDDYDDDK.",
+    ".KKKKKKKKK.",
+    ".KRRRRRRRK.",
+    ".KRRRRRRRK.",
+    ".KKKKKKKKK."],
+  house:[
+    ".....K.....",
+    "....KRK....",
+    "...KRRRK...",
+    "..KRRRRRK..",
+    ".KRRRRRRRK.",
+    "KKKKKKKKKKK",
+    ".KWWWWWWWK.",
+    ".KWCCWBBWK.",
+    ".KWCCWBBWK.",
+    ".KWWWWBYWK.",
+    ".KWWWWBBWK.",
+    ".KKKKKKKKK.",
+    "GGGGGGGGGGG"],
+  spark:[
+    "..Y..",
+    "..Y..",
+    "YYWYY",
+    "..Y..",
+    "..Y.."],
+  mini:[
+    ".KK.KK.",
+    "KRRKRRK",
+    "KRWRRRK",
+    ".KRRRK.",
+    "..KRK..",
+    "...K..."],
+  check:[
+    "..KKKKK..",
+    ".KRRRRRK.",
+    "KRRRRRWRK",
+    "KRRRRWRRK",
+    "KRWRWRRRK",
+    "KRRWRRRRK",
+    ".KRRRRRK.",
+    "..KKKKK.."]
+};
+const sprCache = {};
+function sprite(name, scale=4, flip=false){
+  const key = name+scale+flip;
+  if(sprCache[key]) return sprCache[key];
+  const rows = SPR[name] || SPR.heart, h = rows.length, w = Math.max(...rows.map(r=>r.length));
+  let rects = "";
+  rows.forEach((r,y) => [...r].forEach((c,x) => { if(PAL[c]){ const xx = flip ? w-1-x : x; rects += `<rect x="${xx}" y="${y}" width="1" height="1" fill="${PAL[c]}"/>`; } }));
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w*scale}" height="${h*scale}" shape-rendering="crispEdges">${rects}</svg>`;
+  return sprCache[key] = `<img class="sprite" alt="" width="${w*scale}" height="${h*scale}" src="data:image/svg+xml;utf8,${encodeURIComponent(svg)}">`;
+}
+const ICONS = {ring:"Anillo", chapel:"Ceremonia", box:"Propuesta", house:"Casita", heart:"Corazón"};
+
+/* ---------- state ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let db=null, user=null, assets=null, isOwner=false, me=null;
+let questions=[], answers=[], meta={};
+let tab="play", game=null, loaded={q:false,m:false};
+const blob = id => String(id).includes("/") ? id : "/_blob/" + id;
+const optObj = o => typeof o === "string" ? {label:o} : (o || {});
+
+function toast(t){ const el=$("#toast"); el.textContent=t; el.classList.add("on"); clearTimeout(toast._t); toast._t=setTimeout(()=>el.classList.remove("on"),1800); }
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
+function norm(snap){
+  const arr = Array.isArray(snap) ? snap : (snap && (snap.docs || snap.items)) || [];
+  return arr.map(d => ({ id:d.id, ...(typeof d.data==="function" ? d.data() : (d.data||{})) }));
+}
+function docData(s){ if(!s) return {}; if(typeof s.data==="function") return s.data()||{}; if(s.data && typeof s.data==="object") return s.data; return s; }
+const title = () => meta.title || "Player 1 + Player 2";
+const intro = () => meta.intro || "Elegí lo que más te guste. No hay respuestas incorrectas.";
+function pic(o, icon, scale=5){ return o.img ? `<img class="photo" alt="" src="${blob(esc(o.img))}">` : sprite(icon||"heart", scale); }
+
+
+/* ---------- escena: caminan, propuesta, beso ---------- */
+const SPR_W = 56, SPR_H = 76, SPR_K = 2;
+const SHEETS = {
+  luli:  {img:"luli_casual", w:224, h:380},
+  yeye:  {img:"yeye_casual", w:224, h:380},
+  kneel: {img:"luli_kneel",  w:168, h:152},
+  react: {img:"reaccion",    w:168, h:152}
+};
+const SC = {x1:0, x2:0, token:0, reactInt:null};
+const PRELOAD_SRC = Object.values(SHEETS).map(s => `img/${s.img}.png`)
+  .concat(["playa","mirador","velas","estrellas","picnic","globo"].map(f => `img/fondo_${f}.png`), ["img/novias.png"]);
+let _preloaded = null;
+function preloadAll(){
+  if(!_preloaded) _preloaded = Promise.all(PRELOAD_SRC.map(src => { const i = new Image(); i.src = src; return (i.decode ? i.decode() : Promise.resolve()).catch(() => {}); }));
+  return _preloaded;
+}
+const wait = ms => new Promise(r => setTimeout(r, ms));
+function setFrame(el, sheet, row, col){
+  const s = SHEETS[sheet];
+  if(el._sheet !== sheet){ el._sheet = sheet; el.style.backgroundImage = `url(img/${s.img}.png)`; el.style.backgroundSize = `${s.w*SPR_K}px ${s.h*SPR_K}px`; }
+  el.style.backgroundPosition = `${-col*SPR_W*SPR_K}px ${-row*SPR_H*SPR_K}px`;
+}
+function placeAll(){ const w1=$("#w1"), w2=$("#w2"); if(!w1||!w2) return; w1.style.transform=`translateX(${SC.x1}px)`; w2.style.transform=`translateX(${SC.x2}px)`; }
+function walkTo(e1, e2, speed, token){
+  return new Promise(res => {
+    const w1=$("#w1"), w2=$("#w2"); let last=performance.now(), acc=0, col=0;
+    function tick(t){
+      if(token!==SC.token) return res(false);
+      const dt=Math.min(50,t-last); last=t; acc+=dt;
+      const s=speed*dt/1000;
+      SC.x1 = SC.x1<e1 ? Math.min(e1,SC.x1+s) : Math.max(e1,SC.x1-s);
+      SC.x2 = SC.x2>e2 ? Math.max(e2,SC.x2-s) : Math.min(e2,SC.x2+s);
+      if(acc>220){ acc=0; col=(col+1)%4; }
+      setFrame(w1,"luli",2,col); setFrame(w2,"yeye",3,col); placeAll();
+      if(SC.x1!==e1 || SC.x2!==e2) requestAnimationFrame(tick); else res(true);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+async function typeText(el, text, ms, token){
+  el.textContent = "";
+  for(const ch of [...text]){
+    if(token !== SC.token) return;
+    el.textContent += ch;
+    if(ch.trim() && window.sfx) sfx("type");
+    await wait(ch === " " ? ms*0.5 : ms);
+  }
+}
+async function walkScene(){
+  const token = ++SC.token; clearInterval(SC.reactInt);
+  playSong("propuesta");
+  await Promise.race([preloadAll(), wait(4000)]); if(token!==SC.token) return;
+  const st=$("#stage"), w1=$("#w1"), w2=$("#w2"), ph=$("#ph"), ask=$("#askblock");
+  const W=st.clientWidth, sw=SPR_W*SPR_K, mid=W/2;
+  const end1 = mid - sw/2 - 34, end2 = mid - sw/2 + 34;
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  SC.x1 = reduce ? end1 : -sw; SC.x2 = reduce ? end2 : W; placeAll();
+  if(SC.ben) SC.ben.clear();
+  if(SC.perra) SC.perra.clear();
+  SC.ben = new Ben($("#w3"), "ben"); const benEnd = end1 - 44;
+  SC.perra = new Ben($("#w4"), "perra"); const perraEnd = end2 + SPR_W*SPR_K - 30;
+  SC.perra.x = reduce ? perraEnd : W + 70; SC.perra.put(); SC.perra.f(0,0);
+  if(reduce) SC.perra.sit(false, "left"); else SC.perra.walkTo(perraEnd, 77, () => SC.perra.sit(false, "left"));
+  SC.ben.x = reduce ? benEnd : -sw - 70; SC.ben.put(); SC.ben.f(0,0);
+  if(reduce) SC.ben.sit(false); else SC.ben.walkTo(benEnd, 77, () => SC.ben.sit(false));
+  // la letra de "Mi chica del verano" se escribe mientras caminan
+  ask.classList.remove("hidden"); ask.classList.add("fade");
+  $("#d1").className = "d1 lyric"; $("#d2").className = "d2 lyric";
+  const lyrics = (async () => {
+    await wait(reduce ? 0 : 500);
+    await typeText($("#d1"), "♪ Ibas a ser verano y te quedaste en mí,", 55, token); if(token!==SC.token) return;
+    await wait(500);
+    await typeText($("#d2"), "el calor de mi invierno, la flor de mi jardín. ♪", 55, token);
+  })();
+  setFrame(w1,"luli",2,0); setFrame(w2,"yeye",3,0);
+  if(!reduce){ if(!await walkTo(end1,end2,77,token)) return; }
+  setFrame(w1,"luli",2,0); setFrame(w2,"yeye",3,0);
+  await wait(reduce?0:600); if(token!==SC.token) return;
+  // se arrodilla
+  if(!reduce){ for(let i=0;i<4;i++){ setFrame(w1,"kneel",0,i%2); await wait(320); if(token!==SC.token) return; } }
+  for(let c=0;c<3;c++){
+    setFrame(w1,"kneel",1,c);
+    if(c===1){ let f=0; SC.reactInt=setInterval(()=>{ f^=1; setFrame(w2,"react",0,f); }, 450); setFrame(w2,"react",0,0); }
+    await wait(reduce?0:380); if(token!==SC.token) return;
+  }
+  ph.style.left = (mid - 5) + "px"; ph.classList.remove("hidden");
+  await wait(reduce?0:500); if(token!==SC.token) return;
+  await lyrics; if(token!==SC.token) return;
+  await wait(1400); if(token!==SC.token) return;
+  $("#d1").textContent = ""; $("#d2").textContent = "";
+  $("#d1").className = "d1"; $("#d2").className = "d2";
+  await wait(350); if(token!==SC.token) return;
+  await typeText($("#d1"), "Te amo mucho ♥", 85, token); if(token!==SC.token) return;
+  await wait(450); if(token!==SC.token) return;
+  await typeText($("#d2"), "¿Querés ser mi esposa?", 75, token); if(token!==SC.token) return;
+  $("#dnext").classList.remove("hidden");
+  await wait(500); if(token!==SC.token) return;
+  $("#yesrow").classList.remove("hidden"); $("#yesrow").classList.add("fade");
+}
+async function yesScene(){
+  const token = SC.token; clearInterval(SC.reactInt);
+  stopSong(); sfx("fanfare"); setTimeout(() => playSong("festejo"), 1500);
+  if(SC.ben) SC.ben.happy(true);
+  if(SC.perra){ SC.perra.happy(true); SC.perra.face("left"); }
+  const w1=$("#w1"), w2=$("#w2"), st=$("#stage");
+  $("#askblock").classList.add("hidden"); $("#ph").classList.add("hidden");
+  // salta de felicidad
+  for(const c of [0,1,2,1,2,1,0]){ setFrame(w2,"react",1,c); await wait(220); if(token!==SC.token) return; }
+  // se para y se acercan
+  setFrame(w1,"luli",2,0); setFrame(w2,"yeye",3,0); await wait(350);
+  await walkTo(SC.x1+11, SC.x2-11, 50, token);
+  setFrame(w1,"luli",2,0); setFrame(w2,"yeye",3,0);
+  // beso (Ben mira el paisaje moviendo la cola)
+  if(SC.ben) SC.ben.wag();
+  if(SC.perra) SC.perra.wag();
+  const mid = SC.x1 + SPR_W*SPR_K/2 + (SC.x2 - SC.x1)/2;
+  const big = document.createElement("div"); big.className = "kissheart"; big.style.left = (mid - 18) + "px";
+  big.innerHTML = sprite("heart",3); st.appendChild(big);
+  for(let i=0;i<6;i++){ const m=document.createElement("div"); m.className="kissmini"; m.style.left=(mid-6+(Math.random()*60-30))+"px"; m.style.animationDelay=(i*0.12)+"s"; m.innerHTML=sprite("mini",2); st.appendChild(m); }
+  await wait(1600);
+}
+function flash(done){
+  const o = document.createElement("div");
+  o.className = "flash"; document.body.appendChild(o);
+  celebrateSparks();
+  setTimeout(done, 450);
+  setTimeout(() => o.remove(), 1000);
+}
+function celebrateSparks(){
+  const st = $("#stage"); if(!st) return;
+  for(let k=0;k<10;k++){
+    const s2 = document.createElement("span");
+    s2.className = "tw"; s2.style.cssText = `position:absolute;left:${20+Math.random()*60}%;top:${10+Math.random()*70}%;animation-delay:${Math.random()*.3}s`;
+    s2.innerHTML = sprite("spark",4); st.appendChild(s2);
+  }
+}
+/* ---------- Ben ---------- */
+const BW = 80, BH = 72;
+function Ben(el, img){ this.el = el; this.x = 0; this.anim = null; this.t = []; this.raf = 0; this.state = ""; this.flip = false;
+  if(el && img) el.style.backgroundImage = `url(img/${img}.png)`; }
+Ben.prototype = {
+  f(row, col){ this.el.style.backgroundPosition = `${-col*BW}px ${-row*BH}px`; },
+  put(){ this.el.style.transform = `translateX(${this.x}px) scaleX(${this.flip ? -1 : 1})`; },
+  face(dir){ this.flip = dir === "left"; this.put(); },
+  clear(){ clearInterval(this.anim); this.t.forEach(x => { clearTimeout(x); clearInterval(x); }); this.t = []; cancelAnimationFrame(this.raf); },
+  sit(sleepy = true, face){
+    this.clear(); this.state = "sit"; if(face) this.face(face); let k = 0; this.f(0,0);
+    this.anim = setInterval(() => { k ^= 1; this.f(0,k); }, 520);           // jadea
+    if(sleepy) this.t.push(setTimeout(() => this.lie(), 6000 + Math.random()*2500));
+  },
+  lie(){
+    this.clear(); this.state = "lie"; let k = 0; this.f(3,0);
+    this.anim = setInterval(() => { k ^= 1; this.f(3,k); }, 650);
+    this.t.push(setTimeout(() => this.sleep(), 5000 + Math.random()*2500));
+  },
+  sleep(){
+    this.clear(); this.state = "sleep"; let k = 0; this.f(3,2);
+    this.anim = setInterval(() => { k ^= 1; this.f(3,2+k); }, 1000);       // zzz
+  },
+  wag(){
+    this.clear(); this.state = "wag"; this.flip = false; this.put(); let k = 0; this.f(4,1);
+    this.anim = setInterval(() => { k ^= 1; this.f(4, k ? 3 : 2); }, 260);  // de espaldas, moviendo la cola
+  },
+  bubble(content){
+    const host = this.el.parentElement; if(!host) return;
+    const b = document.createElement("div"); b.className = "bubble"; b.innerHTML = content;
+    b.style.left = (this.x + BW*0.55) + "px"; b.style.bottom = (parseInt(getComputedStyle(this.el).bottom) + BH - 6) + "px";
+    host.appendChild(b); setTimeout(() => b.remove(), 1500);
+  },
+  happy(loop = false){
+    this.clear(); this.state = "happy"; let k = 0; this.f(0,2);
+    this.bubble(Math.random() < 0.6 ? "¡GUAU!" : sprite("mini",2));
+    if(window.sfx) sfx("bark");
+    if(loop) this.t.push(setInterval(() => this.bubble(Math.random() < 0.5 ? "¡GUAU!" : sprite("mini",2)), 1600));
+    this.anim = setInterval(() => { k ^= 1; this.f(0,2+k); }, 380);
+    if(!loop){ const f = this.flip; this.t.push(setTimeout(() => this.sit(true, f ? "left" : "right"), 1300)); }
+  },
+  walkTo(tx, speed, then){
+    this.clear(); this.state = "walk"; this.flip = false;
+    const dir = tx > this.x ? 1 : -1, row = dir > 0 ? 1 : 2;
+    let last = performance.now(), acc = 0, col = 0;
+    const tick = (t) => {
+      const dt = Math.min(50, t - last); last = t; acc += dt;
+      this.x += dir * speed * dt / 1000;
+      if(acc > 100){ acc = 0; col = (col+1) % 4; }
+      this.f(row, col);
+      if((dir > 0 && this.x >= tx) || (dir < 0 && this.x <= tx)){ this.x = tx; this.put(); if(then) then(); return; }
+      this.put(); this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+  }
+};
+const benBar = new Ben(document.getElementById("ben"), "ben");
+const perraBar = new Ben(document.getElementById("perra"), "perra");
+let benLast = null;
+function benSync(){
+  const bar = document.getElementById("benbar");
+  const show = tab === "play" && !(game && game.done);
+  bar.classList.toggle("hidden", !show); document.body.classList.toggle("withben", show);
+  if(!show){ benBar.clear(); perraBar.clear(); benLast = null; return; }
+  const W = bar.clientWidth, gapX = 70;
+  if(!game){
+    if(benLast !== "start"){
+      benLast = "start";
+      benBar.x = W/2 - BW/2 - gapX/2; perraBar.x = W/2 - BW/2 + gapX/2;
+      benBar.sit(true, "right"); perraBar.sit(true, "left");
+    }
+    return;
+  }
+  if(benLast !== game.i){
+    const first = benLast === "start" || benLast === null;
+    benLast = game.i;
+    const spot = [W*0.06, W*0.62][game.i % 2];
+    if(first && benBar.x === 0){ benBar.x = -BW; perraBar.x = -BW - gapX; benBar.put(); perraBar.put(); }
+    // caminan juntos; al llegar se sientan mirándose
+    const goingRight = spot > benBar.x;
+    const tBen = goingRight ? spot + gapX : spot, tPerra = goingRight ? spot : spot + gapX;
+    benBar.walkTo(tBen, 60, () => benBar.sit(true, tBen > tPerra ? "left" : "right"));
+    perraBar.walkTo(tPerra, 60, () => perraBar.sit(true, tPerra > tBen ? "left" : "right"));
+  }
+}
+document.getElementById("view").addEventListener("click", (e) => {
+  if(e.target.closest("[data-o],[data-n]")){ if(window.sfx) sfx("select");
+    if(benBar.state !== "walk") benBar.happy();
+    if(perraBar.state !== "walk") setTimeout(() => { const f = perraBar.flip; perraBar.happy(); perraBar.face(f ? "left" : "right"); }, 250); }
+  if(e.target.closest("#next:not([disabled])")) sfx("next");
+});
+document.getElementById("view").addEventListener("input", () => {
+  for(const d of [benBar, perraBar]) if(d.state === "lie" || d.state === "sleep"){ const f = d.flip; d.sit(true); d.face(f ? "left" : "right"); }
+});
+function weddingCard(){
+  const names = {anillo:"EL ANILLO", propuesta:"LA PROPUESTA", ceremonia:"LA CEREMONIA", outfit:"TU OUTFIT", casita:"NUESTRA CASITA"};
+  const rows = questions.filter(q => q.type === "choice").map(q => {
+    const val = game.vals[q.id]; if(val === undefined) return "";
+    const o = (q.options||[]).map(optObj).find(x => x.label === val) || {};
+    return `<div class="wedrow"><div class="pic">${pic(o, q.icon, 2)}</div><div><div class="k">${names[q.id] || esc(q.text).toUpperCase()}</div><div class="v">${esc(val)}</div></div></div>`;
+  }).join("");
+  const free = questions.find(q => q.type === "text");
+  const dream = free && game.vals[free.id] ? `<div class="wedrow"><div class="pic">${sprite("heart",3)}</div><div><div class="k">LO QUE SOÑÁS</div><div class="v" style="font-weight:400;font-size:16px">“${esc(game.vals[free.id])}”</div></div></div>` : "";
+  return `<div class="wedcard"><h3>♥ NUESTRA BODA ♥</h3>${rows}${dream}</div>`;
+}
+/* ---------- música y efectos 8-bit ---------- */
+const AU = {ctx:null, master:null, music:null, on:true, song:null, timer:null, step:0, next:0, waves:{}};
+try{ AU.on = localStorage.getItem("p1p2_sound") !== "off"; }catch(e){}
+function auInit(){
+  if(AU.ctx){ if(AU.ctx.state === "suspended") AU.ctx.resume(); return; }
+  try{
+    AU.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    AU.master = AU.ctx.createGain(); AU.master.gain.value = AU.on ? 0.55 : 0; AU.master.connect(AU.ctx.destination);
+    AU.music = AU.ctx.createGain(); AU.music.gain.value = 0.7; AU.music.connect(AU.master);
+    for(const d of [0.125, 0.25]){           // ondas de pulso tipo Game Boy
+      const n = 64, re = new Float32Array(n), im = new Float32Array(n);
+      for(let k=1;k<n;k++){ im[k] = 0; re[k] = (2/(k*Math.PI))*Math.sin(k*Math.PI*d); }
+      AU.waves[d] = AU.ctx.createPeriodicWave(re, im);
+    }
+  }catch(e){ AU.ctx = null; }
+}
+const mhz = m => 440 * Math.pow(2, (m-69)/12);
+function tone(kind, midi, t, dur, vol, dest){
+  if(!AU.ctx) return;
+  const o = AU.ctx.createOscillator(), g = AU.ctx.createGain();
+  if(kind === "tri") o.type = "triangle"; else if(kind === "sq") o.type = "square"; else o.setPeriodicWave(AU.waves[kind]);
+  o.frequency.setValueAtTime(mhz(midi), t);
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t+0.006);
+  g.gain.setValueAtTime(vol, t + Math.max(0.01, dur-0.04)); g.gain.linearRampToValueAtTime(0, t+dur);
+  o.connect(g); g.connect(dest || AU.music); o.start(t); o.stop(t+dur+0.02);
+}
+function noise(t, dur, vol, dest){
+  if(!AU.ctx) return;
+  const len = Math.max(1, Math.floor(AU.ctx.sampleRate*dur)), b = AU.ctx.createBuffer(1, len, AU.ctx.sampleRate), d = b.getChannelData(0);
+  for(let i=0;i<len;i++) d[i] = (Math.random()*2-1) * (1 - i/len);
+  const s = AU.ctx.createBufferSource(), g = AU.ctx.createGain(), f = AU.ctx.createBiquadFilter();
+  f.type = "highpass"; f.frequency.value = 5000; g.gain.value = vol;
+  s.buffer = b; s.connect(f); f.connect(g); g.connect(dest || AU.music); s.start(t);
+}
+const NOTE = n => { const m = n.match(/^([A-G])(#?)(\d)$/); return 12*(+m[3]+1) + {C:0,D:2,E:4,F:5,G:7,A:9,B:11}[m[1]] + (m[2]?1:0); };
+const CH = {"A":[57,[0,4,7]],"D":[50,[0,4,7]],"E":[52,[0,4,7]],"Bm":[47,[0,3,7]],"F#m":[54,[0,3,7]],"C#m":[49,[0,3,7]]};
+function buildSong(def){
+  // melodía en corcheas: "-" sostiene la nota anterior, "." es silencio
+  const lead = [];
+  def.lead.forEach((bar, bi) => bar.split(" ").forEach((x, k) => {
+    const st = (bi*8 + k)*2;
+    if(x === "-"){ if(lead.length) lead[lead.length-1].d += 2; }
+    else if(x !== ".") lead.push({s:st, d:2, m:NOTE(x)});
+  }));
+  return Object.assign({}, def, {leadEv: lead, steps: def.chords.length*16});
+}
+const SONGS = {
+  preguntas: buildSong({bpm:108, vol:0.8, hats:true, arp:true,
+    chords:["A","C#m","F#m","E","A","C#m","F#m","E"],
+    lead:["E5 - C#5 - A4 - C#5 E5","E5 - C#5 - G#4 - C#5 E5","F#5 - E5 - C#5 - A4 -","B4 - C#5 D5 E5 - - -",
+          "C#5 - E5 - A5 - G#5 F#5","E5 - - - C#5 - E5 -","F#5 - A5 - F#5 - E5 C#5","E5 - D5 - B4 - G#4 -"]}),
+  propuesta: buildSong({bpm:108, vol:0.75, hats:false, arp:true, pad:true,
+    chords:["A","D","Bm","F#m","A","D","Bm","F#m","A","D","Bm","F#m","A","Bm","E","A"], lead:[]}),
+  festejo: buildSong({bpm:108, vol:0.8, hats:true, arp:true, pad:true,
+    chords:["A","D","Bm","F#m","A","D","Bm","F#m","A","D","Bm","F#m","A","Bm","E","A"], lead:[]})
+};
+function scheduleStep(song, s, t){
+  const sd = 60/song.bpm/4, bar = Math.floor(s/16), k = s % 16, [root, iv] = CH[song.chords[bar]];
+  const v = song.vol;
+  if(k % 4 === 0) tone("tri", root - 12 + (k % 8 === 4 ? 12 : 0), t, sd*3.6, 0.32*v);                 // bajo
+  if(song.arp) tone(0.125, root + 12 + iv[k % 3], t, sd*0.85, 0.05*v);                                  // arpegio
+  if(song.pad && k === 0) iv.forEach(x => tone("tri", root + x, t, sd*15.5, 0.06*v));                  // colchón
+  if(song.hats && k % 2 === 0) noise(t, 0.03, (k % 8 === 4 ? 0.10 : 0.05)*v);                           // hi-hat
+  if(song.hats && k % 8 === 0) tone("sq", 36, t, 0.05, 0.08*v);                                          // bombo
+  for(const e of song.leadEv) if(e.s === s) tone(0.25, e.m, t, e.d*sd*0.95, 0.12*v);                     // melodía
+}
+function playSong(name){
+  auInit(); if(!AU.ctx) return;
+  if(AU.song === SONGS[name]) return;
+  stopSong(); AU.song = SONGS[name]; AU.step = 0; AU.next = AU.ctx.currentTime + 0.08;
+  AU.timer = setInterval(() => {
+    const song = AU.song; if(!song) return;
+    while(AU.next < AU.ctx.currentTime + 0.2){
+      scheduleStep(song, AU.step, AU.next);
+      AU.next += 60/song.bpm/4; AU.step = (AU.step + 1) % song.steps;
+    }
+  }, 50);
+}
+function stopSong(){ clearInterval(AU.timer); AU.timer = null; AU.song = null; }
+function sfx(kind){
+  if(!AU.ctx || !AU.on) return; const t = AU.ctx.currentTime + 0.005;
+  if(kind === "type") tone(0.125, 84 + Math.floor(Math.random()*3), t, 0.025, 0.035, AU.master);
+  if(kind === "select"){ tone(0.25, 81, t, 0.06, 0.08, AU.master); tone(0.25, 88, t+0.06, 0.09, 0.08, AU.master); }
+  if(kind === "next"){ tone(0.25, 76, t, 0.05, 0.06, AU.master); tone(0.25, 81, t+0.05, 0.07, 0.06, AU.master); }
+  if(kind === "bark"){ tone("sq", 62, t, 0.05, 0.06, AU.master); tone("sq", 57, t+0.05, 0.07, 0.06, AU.master); noise(t, 0.08, 0.05, AU.master); }
+  if(kind === "fanfare"){
+    ["A4","C#5","E5","A5"].forEach((n,i) => tone(0.25, NOTE(n), t + i*0.11, 0.1, 0.12, AU.master));
+    ["A5","C#6","E6"].forEach(n => tone(0.25, NOTE(n), t + 0.48, 0.9, 0.07, AU.master));
+    tone("tri", NOTE("A3"), t + 0.48, 0.9, 0.3, AU.master);
+  }
+}
+function setSound(on){
+  AU.on = on; try{ localStorage.setItem("p1p2_sound", on ? "on" : "off"); }catch(e){}
+  if(AU.master) AU.master.gain.value = on ? 0.55 : 0;
+  const b = document.getElementById("mute"); if(b) b.textContent = on ? "♪ ON" : "♪ OFF";
+}
+/* ---------- PLAY ---------- */
+function celebrate(){
+  const layer = document.createElement("div");
+  layer.style.cssText = "position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:8";
+  for(let k=0;k<40;k++){
+    const sp = document.createElement("span");
+    const x = Math.random()*100, d = Math.random()*1.2, sz = [3,4,5][k%3];
+    sp.innerHTML = k%5===0 ? sprite("spark",sz) : sprite("mini",sz);
+    sp.style.cssText = `position:absolute;left:${x}%;bottom:-40px;animation:burst ${2.2+Math.random()*1.5}s steps(10) ${d}s forwards`;
+    layer.appendChild(sp);
+  }
+  document.body.appendChild(layer);
+  setTimeout(() => layer.remove(), 5000);
+}
+function duo(which, h){
+  const fx = [[-90,-20,0],[70,25,.8],[-40,-35,1.6],[105,-10,2.3],[0,30,1.1],[-120,15,2.8]]
+    .map(([x,dx,d]) => `<span class="fx" style="--x:${x}px;--dx:${dx}px;animation-delay:${d}s">${sprite("mini",3)}</span>`).join("");
+  const tw = [[8,12,0],[88,6,.4],[94,40,.9],[4,52,.6]]
+    .map(([l,t,d]) => `<span class="tw" style="left:${l}%;top:${t}%;animation-delay:${d}s">${sprite("spark",3)}</span>`).join("");
+  return `<div class="duo" style="--h:${h||300}px"><img class="art" alt="Nosotras dos" src="img/${which}.png">${fx}${tw}</div>`;
+}
+function renderPlay(){
+  const v = $("#view");
+  if(!game){
+    v.className = "box center fade";
+    v.innerHTML = `${duo("nosotras")}
+      <h1>${esc(title())}</h1>
+      <p style="margin:16px 0 22px;font-size:19px">${esc(intro())}</p>
+      ${questions.length ? `<button class="btn" id="start">PRESS START</button>
+        <p class="pixel muted" style="font-size:9px;margin-top:14px">${questions.length} NIVELES</p>`
+        : `<p class="muted">Todavía no hay preguntas cargadas.</p>`}`;
+    $("#start")?.addEventListener("click", () => { preloadAll(); auInit(); playSong("preguntas"); game = {i:0, vals:{}}; renderPlay(); });
+    return;
+  }
+  if(game.done){
+    v.className = "box center fade";
+    const ask = `<p style="margin:0 0 12px;font-size:24px;font-weight:600;color:var(--red)">Te amo mucho ♥</p>
+      <h1 style="font-size:22px;line-height:1.7">¿Querés ser mi esposa?</h1>`;
+    if(game.yes){
+      v.innerHTML = `${duo("novias", 320)}${ask}
+        <p class="pixel" style="font-size:14px;color:var(--red);margin:18px 0 10px">¡DIJO QUE SÍ!</p>
+        <div class="dialog" style="margin:16px 8px 18px;text-align:left"><p class="d1 lyric" style="margin:0">♪ Y aunque el tiempo se estire y nos quiera mover, algo dentro me pide que yo te vuelva a ver. ♪</p></div>
+        <p style="font-size:19px;margin-bottom:6px">Ya es oficial: Player 1 + Player 2 para siempre.</p>
+        ${weddingCard()}
+        <p class="muted" style="margin:14px 0 0;font-size:14px">Tus respuestas quedaron guardadas.</p>
+        <button class="btn ghost" id="replay" style="margin-top:20px">↻ Jugar de nuevo</button>`;
+      $("#replay").onclick = () => { if(SC.perra) SC.perra.clear(); playSong("preguntas"); if(SC.ben) SC.ben.clear(); SC.token++; clearInterval(SC.reactInt); game = null; renderPlay(); window.scrollTo(0,0); };
+      return;
+    }
+    const FONDOS = {"En la playa":"playa","Mirador con vista":"mirador","En casa con velas":"velas","Bajo las estrellas":"estrellas","Picnic entre flores":"picnic","Globo aerostático":"globo"};
+    const fondo = FONDOS[game.vals["propuesta"]] || "playa";
+    v.className = "box center fade scene";
+    v.innerHTML = `<div class="stage" id="stage" style="background-image:url(img/fondo_${fondo}.png)">
+        <div class="benw" id="w3"></div>
+        <div class="benw" id="w4"></div>
+        <div class="walker" id="w1"></div>
+        <div class="walker" id="w2"></div>
+        <div class="popheart hidden" id="ph">${sprite("heart",2)}</div>
+      </div>
+      <div id="askblock" class="hidden" style="padding:18px 16px 24px">
+        <div class="dialog"><p id="d1" class="d1"></p><p id="d2" class="d2"></p><span id="dnext" class="dnext hidden">▼</span></div>
+        <div id="yesrow" class="row hidden" style="justify-content:center;gap:14px;margin:18px 0 6px;flex-wrap:wrap">
+          <button class="btn" data-yes="1">SÍ ♥</button>
+          <button class="btn" data-yes="2">¡SÍ! ♥</button>
+        </div></div>`;
+    walkScene();
+    v.querySelectorAll("[data-yes]").forEach(b => b.onclick = async () => {
+      v.querySelectorAll("[data-yes]").forEach(x => x.disabled = true);
+      game.yes = b.textContent.trim();
+      try{ if(game.aid) await db.collection("answers").doc(game.aid).update({yes: game.yes, yesAt: Date.now()}); }catch(e){ console.log(e); }
+      await yesScene();
+      flash(() => { renderPlay(); window.scrollTo(0,0); celebrate(); });
+    });
+    return;
+  }
+  const q = questions[game.i], val = game.vals[q.id];
+  const last = game.i === questions.length - 1;
+  let input = "";
+  if(q.type === "choice"){
+    input = `<div class="grid">${(q.options||[]).map((o,k) => { o = optObj(o); return `
+      <button class="card ${val===o.label?"on":""}" data-o="${k}">
+        <span class="check">${sprite("check",3)}</span>
+        <div class="pic">${pic(o, q.icon)}</div>
+        <div class="name">${esc(o.label)}</div>
+        ${o.desc ? `<div class="desc">${esc(o.desc)}</div>` : ""}
+      </button>`;}).join("")}</div>
+      <div class="note"><label>¿Algo para agregar? (opcional)</label><textarea id="note" placeholder="Escribí acá…">${esc(game.vals[q.id+"__note"]||"")}</textarea></div>`;
+  } else if(q.type === "scale"){
+    input = `<div class="scale">${[1,2,3,4,5,6,7,8,9,10].map(n => `<button class="card ${val===n?"on":""}" data-n="${n}">${n}</button>`).join("")}</div>`;
+  } else {
+    input = `<textarea id="txt" placeholder="Escribí acá…">${esc(val||"")}</textarea>`;
+  }
+  v.className = "box fade";
+  v.innerHTML = `
+    <div class="bar">${questions.map((_,k)=>`<i class="${k<=game.i?"on":""}"></i>`).join("")}</div>
+    <div class="row between" style="align-items:flex-end;margin-bottom:12px"><div class="qtag" style="margin:0">${sprite(q.icon||"heart",2)} NIVEL ${game.i+1}/${questions.length}</div><img class="mini" alt="" src="img/nosotras.png"></div>
+    <h2 style="margin-bottom:20px">${esc(q.text)}</h2>
+    ${input}
+    <div class="nav">
+      <button class="btn ghost" id="back" ${game.i===0?"style='visibility:hidden'":""}>◀ Atrás</button>
+      <button class="btn" id="next">${last?"Enviar ♥":"Siguiente ▶"}</button>
+    </div>
+    <p id="hint" class="pixel" style="font-size:8px;color:var(--muted);text-align:right;margin-top:10px">${q.type==="text"?"ESCRIBÍ ALGO PARA SEGUIR":"ELEGÍ UNA OPCIÓN PARA SEGUIR"}</p>`;
+  const answered = () => { const x = game.vals[q.id]; return x !== undefined && String(x).trim() !== ""; };
+  const sync = () => { const b = $("#next"); b.disabled = !answered(); b.title = b.disabled ? "Elegí una opción para seguir" : ""; $("#hint").style.visibility = b.disabled ? "visible" : "hidden"; };
+  const txt = $("#txt"); if(txt) txt.oninput = () => { game.vals[q.id] = txt.value; sync(); };
+  const note = $("#note"); if(note) note.oninput = () => game.vals[q.id+"__note"] = note.value;
+  v.querySelectorAll("[data-o]").forEach(b => b.onclick = () => {
+    game.vals[q.id] = optObj(q.options[+b.dataset.o]).label;
+    v.querySelectorAll("[data-o]").forEach(x => x.classList.toggle("on", x===b));
+    sync();
+  });
+  v.querySelectorAll("[data-n]").forEach(b => b.onclick = () => {
+    game.vals[q.id] = +b.dataset.n;
+    v.querySelectorAll("[data-n]").forEach(x => x.classList.toggle("on", x===b));
+    sync();
+  });
+  sync();
+  $("#back").onclick = () => { game.i--; renderPlay(); window.scrollTo(0,0); };
+  $("#next").onclick = async () => { if(!answered()) return; if(!last){ game.i++; renderPlay(); window.scrollTo(0,0); return; } await submit(); };
+}
+async function submit(){
+  const btn = $("#next"); btn.disabled = true; btn.textContent = "Guardando…";
+  if(!db){ toast("Sin conexión"); btn.disabled=false; btn.textContent="Enviar ♥"; return; }
+  const snap = questions.map(q => ({id:q.id, text:q.text, type:q.type, icon:q.icon||"heart",
+    options:(q.options||[]).map(optObj).map(o => ({label:o.label||"", img:o.img||""}))}));
+  try{
+    const aid = uid();
+    await db.collection("answers").doc(aid).set({by:me, at:Date.now(), questions:snap, values:game.vals});
+    game.done = true; game.aid = aid; renderPlay(); window.scrollTo(0,0);
+  }catch(e){ console.log(e); toast("No se pudo guardar"); btn.disabled=false; btn.textContent="Enviar ♥"; }
+}
+
+/* ---------- EDIT ---------- */
+let uploadTarget = null;
+$("#file").onchange = async e => {
+  const f = e.target.files[0]; e.target.value = "";
+  if(!f || !uploadTarget) return;
+  if(!assets){ toast("No se pueden subir fotos acá"); return; }
+  const {qid, k} = uploadTarget; uploadTarget = null;
+  toast("Subiendo…");
+  try{
+    const r = await assets.upload(f);
+    const q = questions.find(x => x.id===qid);
+    const opts = (q.options||[]).map(optObj); opts[k] = {...opts[k], img:r.id};
+    await saveQ(qid, {...q, options:opts});
+  }catch(err){ console.log(err); toast("No se pudo subir"); }
+};
+function renderEdit(){
+  const v = $("#view"); v.className = "fade";
+  v.innerHTML = `
+    <div class="box" style="margin-bottom:20px">
+      <h2 style="margin-bottom:14px">Portada</h2>
+      <label class="small">Título</label><input type="text" id="mt" value="${esc(title())}">
+      <label class="small" style="margin-top:10px">Mensaje</label><input type="text" id="mi" value="${esc(intro())}">
+    </div>
+    ${questions.map((q,i) => `
+    <div class="qedit" data-id="${q.id}">
+      <div class="row between">
+        <span class="tag">NIVEL ${i+1}</span>
+        <div class="row" style="gap:0">
+          <button class="icon" data-act="up">▲</button>
+          <button class="icon" data-act="down">▼</button>
+          <button class="icon" data-act="del">✕</button>
+        </div>
+      </div>
+      <input type="text" data-f="text" value="${esc(q.text)}" placeholder="Pregunta">
+      <div class="row">
+        <select data-f="type" style="flex:1">
+          <option value="choice" ${q.type==="choice"?"selected":""}>Elegir opción</option>
+          <option value="text" ${q.type==="text"?"selected":""}>Respuesta libre</option>
+          <option value="scale" ${q.type==="scale"?"selected":""}>Escala 1 a 10</option>
+        </select>
+        <select data-f="icon" style="flex:1">
+          ${Object.entries(ICONS).map(([k,l]) => `<option value="${k}" ${(q.icon||"heart")===k?"selected":""}>Ícono: ${l}</option>`).join("")}
+        </select>
+      </div>
+      ${q.type==="choice" ? `<div style="display:grid;gap:8px">
+        ${(q.options||[]).map(optObj).map((o,k) => `
+          <div class="oedit" data-k="${k}">
+            <div class="thumb" data-up="${k}" title="Subir foto">${pic(o, q.icon, 3)}<span class="up">${o.img?"CAMBIAR":"FOTO"}</span></div>
+            <div>
+              <input type="text" data-of="label" value="${esc(o.label)}" placeholder="Nombre">
+              <input type="text" data-of="desc" value="${esc(o.desc||"")}" placeholder="Descripción corta (opcional)">
+            </div>
+            <div style="display:grid">
+              <button class="icon" data-odel="${k}" title="Borrar opción">✕</button>
+              ${o.img ? `<button class="icon" data-ximg="${k}" title="Quitar foto" style="font-size:13px">sin foto</button>` : ""}
+            </div>
+          </div>`).join("")}
+        <button class="btn small ghost" data-addopt>+ Opción</button>
+      </div>` : ""}
+    </div>`).join("")}
+    <button class="btn" id="add" style="width:calc(100% - 8px)">+ Nuevo nivel</button>
+    ${assets ? "" : `<p class="muted" style="margin-top:14px;font-size:15px">Para subir fotos abrí la página en claude.ai.</p>`}`;
+
+  const saveMeta = async () => {
+    const t = $("#mt").value.trim(), m = $("#mi").value.trim();
+    meta = {title:t, intro:m};
+    try{ await db.doc("settings/meta").set(meta); toast("Guardado"); }catch(e){ toast("No se pudo guardar"); }
+  };
+  $("#mt").onchange = saveMeta; $("#mi").onchange = saveMeta;
+
+  v.querySelectorAll(".qedit").forEach(el => {
+    const id = el.dataset.id, q = () => questions.find(x => x.id===id);
+    const opts = () => (q().options||[]).map(optObj);
+    el.querySelectorAll("[data-f]").forEach(inp => inp.onchange = async () => {
+      const patch = {[inp.dataset.f]: inp.value};
+      if(inp.dataset.f==="type" && inp.value==="choice" && !opts().length) patch.options = [{label:"Opción A"},{label:"Opción B"}];
+      await saveQ(id, {...q(), ...patch});
+    });
+    el.querySelectorAll(".oedit").forEach(row => {
+      const k = +row.dataset.k;
+      row.querySelectorAll("[data-of]").forEach(inp => inp.onchange = async () => {
+        const o = opts(); o[k] = {...o[k], [inp.dataset.of]: inp.value.trim()}; await saveQ(id, {...q(), options:o});
+      });
+    });
+    el.querySelectorAll("[data-up]").forEach(t => t.onclick = () => {
+      if(!assets){ toast("No se pueden subir fotos acá"); return; }
+      uploadTarget = {qid:id, k:+t.dataset.up}; $("#file").click();
+    });
+    el.querySelectorAll("[data-ximg]").forEach(b => b.onclick = async () => {
+      const o = opts(); const {img, ...rest} = o[+b.dataset.ximg]; o[+b.dataset.ximg] = rest; await saveQ(id, {...q(), options:o});
+    });
+    el.querySelectorAll("[data-odel]").forEach(b => b.onclick = async () => {
+      if(!b.dataset.sure){ b.dataset.sure=1; b.textContent="¿Sí?"; b.style.color="var(--red)"; b.style.fontSize="13px"; return; }
+      const o = opts(); o.splice(+b.dataset.odel,1); await saveQ(id, {...q(), options:o});
+    });
+    el.querySelector("[data-addopt]")?.addEventListener("click", async () => {
+      await saveQ(id, {...q(), options:[...opts(), {label:"Nueva opción"}]});
+    });
+    el.querySelectorAll("[data-act]").forEach(b => b.onclick = async () => {
+      const act = b.dataset.act, i = questions.findIndex(x => x.id===id);
+      if(act==="del"){
+        if(!b.dataset.sure){ b.dataset.sure=1; b.textContent="¿Borrar?"; b.style.color="var(--red)"; b.style.fontSize="13px"; return; }
+        try{ await db.collection("questions").doc(id).delete(); toast("Borrado"); }catch(e){ toast("No se pudo borrar"); }
+        return;
+      }
+      const j = act==="up" ? i-1 : i+1;
+      if(j<0 || j>=questions.length) return;
+      const list = [...questions]; [list[i], list[j]] = [list[j], list[i]];
+      for(let n=0;n<list.length;n++){ if(list[n].order !== n) await saveQ(list[n].id, {...list[n], order:n}, true); }
+    });
+  });
+  $("#add").onclick = async () => {
+    const order = questions.length ? Math.max(...questions.map(q => q.order ?? 0)) + 1 : 0;
+    await saveQ(uid(), {text:"Nueva pregunta", type:"choice", icon:"heart", options:[{label:"Opción A"},{label:"Opción B"}], order});
+  };
+}
+async function saveQ(id, q, quiet){
+  const {id:_, ...data} = q;
+  data.options = (data.options||[]).map(optObj).map(o => { const r = {label:o.label||""}; if(o.desc) r.desc=o.desc; if(o.img) r.img=o.img; return r; });
+  try{ await db.collection("questions").doc(id).set(data); if(!quiet) toast("Guardado"); }
+  catch(e){ console.log(e); toast("No se pudo guardar"); }
+}
+
+/* ---------- ANSWERS ---------- */
+async function renderAnswers(){
+  const v = $("#view");
+  if(!answers.length){
+    v.className = "box center fade";
+    v.innerHTML = `<div style="margin:6px 0 16px">${sprite("box",6)}</div><h2>Todavía nada</h2>
+      <p class="muted" style="margin-top:10px">Cuando ella termine el juego, sus respuestas aparecen acá.</p>`;
+    return;
+  }
+  const ids = [...new Set(answers.map(a => a.by).filter(Boolean))];
+  let ps = {}; try{ ps = (user && ids.length) ? await user.profiles(ids) : {}; }catch(e){}
+  const fmt = t => new Date(t).toLocaleString("es-AR",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+  const sorted = [...answers].sort((a,b) => (b.at||0)-(a.at||0));
+  v.className = "fade";
+  v.innerHTML = sorted.map(a => {
+    const who = (ps[a.by] && ps[a.by].name) || (a.by===me ? "Vos (prueba)" : "Player 2");
+    const vals = a.values || {};
+    return `<div class="sub">
+      <div class="row between" style="margin-bottom:6px"><span class="tag">${esc(who)}</span><span class="muted" style="font-size:14px">${a.at?fmt(a.at):""}</span></div>
+      ${a.yes ? `<p class="pixel" style="font-size:11px;color:var(--red);margin:8px 0 6px">💍 DIJO QUE ${esc(a.yes)}</p>` : ""}
+      ${(a.questions||[]).map(q => {
+        const val = vals[q.id], note = vals[q.id+"__note"];
+        const o = (q.options||[]).find(x => x.label===val) || {};
+        return `<div class="item"><div class="pic">${pic(o, q.icon, 3)}</div><div>
+          <div class="q">${esc(q.text)}</div>
+          <div class="a">${val===undefined||val==="" ? '<span class="muted">Sin respuesta</span>' : esc(val)}</div>
+          ${note ? `<div class="n">“${esc(note)}”</div>` : ""}</div></div>`;
+      }).join("")}
+    </div>`;
+  }).join("");
+}
+
+/* ---------- ROUTER ---------- */
+const _renderPlay = renderPlay;
+renderPlay = function(){ _renderPlay(); benSync(); };
+function render(){
+  if(!loaded.q || !loaded.m) return;
+  if(tab==="edit" && isOwner) return renderEdit();
+  if(tab==="answers" && isOwner) return renderAnswers();
+  renderPlay();
+}
+document.querySelectorAll(".tab").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x => { x.classList.toggle("on", x===b); x.classList.toggle("ghost", x!==b); });
+  tab = b.dataset.v; render(); benSync(); window.scrollTo(0,0);
+});
+
+document.getElementById("mute").onclick = () => { auInit(); setSound(!AU.on); };
+setSound(AU.on);
+(async function init(){
+  const timer = setTimeout(() => { if(!loaded.q){ $("#view").className="box center"; $("#view").innerHTML = `<h2>GAME OVER</h2><p class="muted" style="margin-top:10px">No pudimos cargar el juego. Revisá que hayas iniciado sesión y recargá.</p>`; } }, 10000);
+  try{ [db, user] = await Promise.all([claude.use("db"), claude.use("user")]); }catch(e){}
+  if(!db){ clearTimeout(timer); $("#view").innerHTML = `${sprite("heart",6)}<h2 style="margin-top:14px">INSERT COIN</h2><p class="muted" style="margin-top:10px">Iniciá sesión para jugar y que se guarden tus respuestas.</p>`; return; }
+  try{ isOwner = (user && await user.isOwner()) || false; }catch(e){}
+  try{ me = user ? await user.id() : null; }catch(e){}
+  if(isOwner){
+    $("#tabs").classList.remove("hidden");
+    try{ assets = await claude.use("assets"); }catch(e){}
+  }
+  const busy = () => (tab==="play" && game) || (tab==="edit" && document.activeElement && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName));
+  db.collection("questions").onSnapshot(s => {
+    clearTimeout(timer);
+    questions = norm(s).sort((a,b) => (a.order??0)-(b.order??0));
+    loaded.q = true; if(!busy()) render();
+  }, e => console.log(e));
+  db.doc("settings/meta").onSnapshot(s => {
+    meta = docData(s) || {}; loaded.m = true; if(!busy() && tab!=="edit") render();
+  }, e => { loaded.m = true; render(); });
+  if(isOwner){
+    db.collection("answers").onSnapshot(s => { answers = norm(s); if(tab==="answers") render(); }, e => console.log(e));
+  }
+})();
+</script>
+</body>
+</html>
